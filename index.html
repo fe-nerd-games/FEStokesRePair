@@ -13,35 +13,66 @@
         h1, h2, p {
             text-align: left;
         }
+        /* Add a floating table of content element */
+        #toc {
+            position: fixed;
+            right: 0;
+            top: 0;
+            background-color: #fff;
+            padding: 10px;
+            border: 1px solid #000;
+            border-radius: 5px;
+            margin: 10px;
+        }
+        #toc a {
+            display: block;
+            margin-bottom: 5px;
+        }
     </style>
+    <script>
+        function createTOC() {
+            var toc = document.getElementById("toc");
+            var headings = document.getElementsByTagName("h2");
+            var links = "";
+            for (var i = 0; i < headings.length; i++) {
+                var id = headings[i].id;
+                if (id) {
+                    links += "<a href=\"#" + id + "\">" + headings[i].innerHTML + "</a>";
+                }
+            }
+            toc.innerHTML = links;
+        }
+        window.onload = createTOC;
+    </script>
 </head>
 <body>
+    <div id="toc"></div>
     <img src="festokesrepair.jpg" alt="FE Stokes Re-Pair" style="max-width: 800px;">
-    <h1> FE Stokes Re-Pair    
+    <h1 id="main"> FE Stokes Re-Pair    
          <br>
         (a nerdy card game)</h1>
     <p>Do you want to have a quick introduction to FE Stokes Re-Pair (including the rules) on your ears? Listen to <a href=https://github.com/fe-nerd-games/FEStokesRePair/raw/refs/heads/main/festokesrepair_pod.mp4> a NotebookLM generated Podcast</a> on it:</p>
     <audio controls>
         <source src="https://github.com/fe-nerd-games/FEStokesRePair/raw/refs/heads/main/festokesrepair_pod.mp4" />
     </audio>
-    <h2> The rules of the game </h2>
+    <h2 id="rules"> The rules of the game </h2>
     <p>
         The rules of the game are described <a href="https://github.com/fe-nerd-games/FEStokesRePair/raw/refs/heads/main/rules.pdf">here</a>.
     </p>
     <p>
         In the game Stokes discretizations are set up. To check if a discretization is indeed stable, optimally convergent and/or pressure robust you can have a look at the (still incomplete) <a href="https://github.com/fe-nerd-games/FEStokesRePair/raw/refs/heads/main/table.pdf">solution table</a>.
     </p>
-    <h2> How to re-print / get the material </h2>
+    <h2 id="material"> Getting the material </h2>
     <p>
         We are still in the progress of polishing the material for sharing. For the moment contact us at <a href="mailto:fe.nerd.games@gmail.com">fe.nerd.games@gmail.com</a> for further details.
     </p>
-    <h2> Tabletop simulator Mod "FEStokesRePair"</h2>
+    <h2 id="tts"> Tabletop simulator Mod</h2>
     <p>
         Wanna play remotely online? We have an unpolished Mod for the "Tabletop simulator" that you can get on Steam. Our Mod can be found 
         <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3355234421">here</a>. Here is a screenshot:
         <img src="tts.jpg" alt="Tabletop simulator" style="max-width: 800px;">
     </p>
-    <h2> Feedback </h2>
+    <h2 id="feedback"> Feedback </h2>
     <p>
         You found a mistake in the rules or cards or see a flaw or have a nice idea for extensions? Contact us at <a href="mailto:fe.nerd.games@gmail.com">fe.nerd.games@gmail.com</a> or directly open an issue at <a href="https://github.com/fe-nerd-games/FEStokesRePair/issues">github</a>.
     </p>
